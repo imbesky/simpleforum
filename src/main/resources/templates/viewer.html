@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewer</title>
+</head>
+<body>
+    <div>
+        <div>
+            <span th:text="${post.title}"></span>
+            <span th:text="${post.author}"></span>
+            <span th:text="${post.writtenDate}"></span>
+        </div>
+        <div>
+            <span th:text="${post.content}"></span>
+        </div>
+        <div>
+            <a th:href="@{'/edit?number='+${post.number}}">Edit</a>
+            <a th:href="@{'/delete?number='+${post.number}}">Delete</a>
+        </div>
+    </div>
+</body>
+</html>
