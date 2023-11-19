@@ -1,10 +1,8 @@
 package imbesky.simpleforum.controller;
 
-import imbesky.simpleforum.domain.Post;
 import imbesky.simpleforum.domain.dto.PostDto;
 import imbesky.simpleforum.domain.dto.PostsDto;
 import imbesky.simpleforum.service.ViewerService;
-import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +16,8 @@ public class ViewerController {
     }
 
     @GetMapping("/")
-    public String list(Model model){
-        PostsDto posts = viewerService.posts();
+    public String list(final Model model){
+        final PostsDto posts = viewerService.posts();
         model.addAttribute("postsNumber",posts.getPostsNumber());
         model.addAttribute("ids", posts.getIds());
         model.addAttribute("authors",posts.getAuthors());
