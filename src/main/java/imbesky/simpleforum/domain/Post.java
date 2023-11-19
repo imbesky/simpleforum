@@ -1,5 +1,6 @@
 package imbesky.simpleforum.domain;
 
+import imbesky.simpleforum.domain.dto.PostSaveDto;
 import java.time.LocalDate;
 
 public class Post {
@@ -9,12 +10,12 @@ public class Post {
     private Title title;
     private final WrittenDate writtenDate;
     private Content content;
-    public Post(Password password, Author author, Title title, Content content){
-        this.password = password;
-        this.author = author;
-        this.title = title;
-        this.writtenDate = new WrittenDate();
-        this.content = content;
+    public Post(final PostSaveDto postSaveDto){
+        password = new Password(postSaveDto.getPassword());
+        author = new Author(postSaveDto.getAuthor());
+        title = new Title(postSaveDto.getTitle());
+        writtenDate = new WrittenDate();
+        content = new Content(postSaveDto.getContent());
     }
     public long postId(){
         return id;
