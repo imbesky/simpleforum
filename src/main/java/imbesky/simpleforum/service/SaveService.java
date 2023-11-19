@@ -15,4 +15,8 @@ public class SaveService {
         final Post post = new Post(postSaveDto);
         simplePostRepository.save(post);
     }
+    public void savePost(final long id, final PostSaveDto postSaveDto){
+        final Post post = new Post(postSaveDto);
+        simplePostRepository.edit(id, post);
+    } //TODO 데이터베이스 연동 이후 수정 예정
 }

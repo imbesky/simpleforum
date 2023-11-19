@@ -9,6 +9,11 @@ public class Password {
         validate(string);
         password = string;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
     private void validate(final String input){
         if(input.length()!=PROPER_LENGTH){
             throw new PasswordException();

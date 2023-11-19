@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+</head>
+<body>
+    <form th:action="@{'/edit-pwcheck?id='+${id}}" method="post">
+        <div>
+            <label for="inputPassword">Enter the Password</label>
+            <input type="text" id="inputPassword" name="inputPassword">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -27,7 +27,7 @@ public class ViewerController {
     }
 
     @GetMapping("/view")
-    public String postViewer(@RequestParam final int id, final Model model){
+    public String postViewer(@RequestParam final long id, final Model model){
         PostViewDto post = viewerService.inquirePost(id);
         model.addAttribute("post", post);
         return "viewer";

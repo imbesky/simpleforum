@@ -23,6 +23,9 @@ public class Post {
     public String authorName(){
         return author.authorName();
     }
+    public String getPassword(){
+        return password.getPassword();
+    }
     public String shortTitle(){
         return title.shortTitle();
     }
