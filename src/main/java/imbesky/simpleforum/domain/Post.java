@@ -11,11 +11,11 @@ public class Post {
     private final WrittenDate writtenDate;
     private Content content;
     public Post(final PostSaveDto postSaveDto){
-        password = new Password(postSaveDto.getPassword());
-        author = new Author(postSaveDto.getAuthor());
-        title = new Title(postSaveDto.getTitle());
+        password = new Password(postSaveDto.password());
+        author = new Author(postSaveDto.author());
+        title = new Title(postSaveDto.title());
         writtenDate = new WrittenDate();
-        content = new Content(postSaveDto.getContent());
+        content = new Content(postSaveDto.content());
     }
     public long postId(){
         return id;

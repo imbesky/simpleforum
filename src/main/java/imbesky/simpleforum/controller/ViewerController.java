@@ -1,6 +1,6 @@
 package imbesky.simpleforum.controller;
 
-import imbesky.simpleforum.domain.dto.PostDto;
+import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.domain.dto.PostsDto;
 import imbesky.simpleforum.service.ViewerService;
 import org.springframework.stereotype.Controller;
@@ -18,17 +18,17 @@ public class ViewerController {
     @GetMapping("/")
     public String list(final Model model){
         final PostsDto posts = viewerService.posts();
-        model.addAttribute("postsNumber",posts.getPostsNumber());
-        model.addAttribute("ids", posts.getIds());
-        model.addAttribute("authors",posts.getAuthors());
-        model.addAttribute("titles",posts.getTitles());
-        model.addAttribute("writtenDates",posts.getWrittenDates());
+        model.addAttribute("postsNumber",posts.number());
+        model.addAttribute("ids", posts.ids());
+        model.addAttribute("authors",posts.authors());
+        model.addAttribute("titles",posts.titles());
+        model.addAttribute("writtenDates",posts.writtenDates());
         return "list";
     }
 
     @GetMapping("/view")
     public String postViewer(@RequestParam final int id, final Model model){
-        PostDto post = viewerService.inquirePost(id);
+        PostViewDto post = viewerService.inquirePost(id);
         model.addAttribute("post", post);
         return "viewer";
     }

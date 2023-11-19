@@ -3,34 +3,14 @@ package imbesky.simpleforum.domain.dto;
 import java.time.LocalDate;
 import java.util.List;
 
-public class PostsDto {
-    private final int postsNumber;
-    private final List<Long> ids;
-    private final List<String> authors;
-    private final List<String> titles;
-    private final List<LocalDate> writtenDates;
-
-    public PostsDto(List<Long> ids, List<String> authors, List<String> titles, List<LocalDate> writtenDates){
-        postsNumber = ids.size();
-        this.ids = ids;
-        this.authors = authors;
-        this.titles = titles;
-        this.writtenDates = writtenDates;
-    }
-
-    public int getPostsNumber() {
-        return postsNumber;
-    }
-    public List<Long> getIds() {
-        return ids;
-    }
-    public List<String> getAuthors() {
-        return authors;
-    }
-    public List<String> getTitles() {
-        return titles;
-    }
-    public List<LocalDate> getWrittenDates() {
-        return writtenDates;
+public record PostsDto(
+        int number,
+        List<Long> ids,
+        List<String> authors,
+        List<String> titles,
+        List<LocalDate> writtenDates
+){
+    public static PostsDto of(final List<Long> ids, final List<String> authors, final List<String> titles, final List<LocalDate> writtenDates){
+        return new PostsDto(ids.size(), ids, authors, titles, writtenDates);
     }
 }
