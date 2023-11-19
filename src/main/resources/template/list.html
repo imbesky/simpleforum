@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+    <div class="container">
+        <button><a href="/editor">write post</a></button>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="number : ${#numbers.sequence(0,postsNumber)}">
+                <td th:text="${ids.get(number)}"></td>
+                <td>
+                    <a th:href="@{'/view?id=' + ${ids.get(number)}}">
+                        <span th:text="${titles.get(number)}"></span>
+                    </a>
+                </td>
+                <td th:text="${authors.get(number)}"></td>
+                <td th:text="${writtenDates.get(number)}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

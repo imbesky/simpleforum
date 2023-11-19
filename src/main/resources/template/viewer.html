@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewer</title>
+</head>
+<body>
+    <div class="container">
+        <div id="information">
+            <span th:text="${post.getId()}"></span>
+            <span th:text="${post.getTitle()}"></span>
+            <span th:text="${post.getAuthor()}"></span>
+            <span th:text="${post.getWrittenDate()}"></span>
+        </div>
+        <div id="content">
+            <span th:text="${post.getContent()}"></span>
+        </div>
+        <div id="button">
+            <button><a th:href="@{'/edit?id='+${post.getId()}}">Edit</a></button>
+            <button><a th:href="@{'/delete?id='+${post.getId()}}">Delete</a></button>
+        </div>
+    </div>
+</body>
+</html>
