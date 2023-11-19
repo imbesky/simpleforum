@@ -22,7 +22,7 @@ public class EditController {
 
     @PostMapping("/edit-pwcheck")
     public String checkPassword(@RequestParam final long id, final Model model, final PasswordDto passwordDto){
-        if (editService.check(passwordDto)){
+        if (editService.checkPassword(passwordDto)){
             final PostSaveDto original = editService.originalPost(passwordDto.id());
             model.addAttribute("post", original);
             model.addAttribute("id", id);
