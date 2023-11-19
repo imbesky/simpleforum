@@ -13,17 +13,22 @@ public class SimplePostRepository implements PostRepository {
     }
 
     @Override
-    public void edit(Post post) {
+    public void edit(final long id, final Post post) {
 
     }
 
     @Override
-    public void delete(long id) {
+    public void edit(final Post post) {
 
     }
 
     @Override
-    public boolean checkPassword(String input, long id) {
+    public void delete(final long id) {
+
+    }
+
+    @Override
+    public boolean checkPassword(final String input, final long id) {
         return false;
     }
 
@@ -33,7 +38,7 @@ public class SimplePostRepository implements PostRepository {
     }
 
     @Override
-    public Post findById(long id) {
+    public Post findById(final long id) {
         return null;
     }
 }
