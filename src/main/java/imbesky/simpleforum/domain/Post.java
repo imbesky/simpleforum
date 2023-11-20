@@ -4,22 +4,38 @@ import imbesky.simpleforum.domain.dto.PostEditDto;
 import imbesky.simpleforum.domain.dto.PostPreviewDto;
 import imbesky.simpleforum.domain.dto.PostSaveDto;
 import imbesky.simpleforum.domain.dto.PostViewDto;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Post {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Embedded
     private Password password;
-    private final Author author;
+    @Embedded
+    private Author author;
+    @Embedded
     private Title title;
-    private final WrittenDate writtenDate;
+    @Embedded
+    private WrittenDate writtenDate;
+    @Embedded
     private Content content;
-    public Post(final PostSaveDto postSaveDto){
+    public Post(){
+    }
+    private Post(final PostSaveDto postSaveDto){
         password = new Password(postSaveDto.password());
         author = new Author(postSaveDto.author());
         title = new Title(postSaveDto.title());
         writtenDate = new WrittenDate();
         content = new Content(postSaveDto.content());
     }
-
+    public static Post from(final PostSaveDto postSaveDto){
+        return new Post(postSaveDto);
+    }
     public PostViewDto toPostViewDto(){
         return PostViewDto.of(id, author.authorName(), title.fullTitle(),
                 writtenDate.initialWrittenDate(), content.fullContent());
@@ -27,6 +43,10 @@ public class Post {
 
     public PostPreviewDto toPostPreviewDto(){
         return PostPreviewDto.of(id, author.authorName(), title.shortTitle(), writtenDate.initialWrittenDate());
+    }
+
+    public boolean checkPassword(final String input){
+        return password.check(input);
     }
 
     public void editPost(final PostEditDto postEditDto){
