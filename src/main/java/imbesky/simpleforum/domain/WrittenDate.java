@@ -2,17 +2,21 @@ package imbesky.simpleforum.domain;
 
 import jakarta.persistence.Embeddable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import org.springframework.format.datetime.DateFormatter;
 
 @Embeddable
 public class WrittenDate {
-    private final LocalDate writtenDate;
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm";
+    private final LocalDateTime writtenDate;
     public WrittenDate(){
-        writtenDate = LocalDate.now();
+        writtenDate = LocalDateTime.now();
     }
-    public LocalDate initialWrittenDate(){
-        return writtenDate;
+    public String  initialWrittenDate(){
+        return writtenDate.format(DateTimeFormatter.ofPattern(DATE_FORMAT));
     }
     public long passedDayUntilNow(){
-        return writtenDate.compareTo(LocalDate.now());
+        return writtenDate.compareTo(LocalDateTime.now());
     }
 }
