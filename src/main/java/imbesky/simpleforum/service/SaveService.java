@@ -15,11 +15,10 @@ public class SaveService {
     public SaveService(SimplePostRepository simplePostRepository) {
         this.simplePostRepository = simplePostRepository;
     }
-    public void savePost(final PostSaveDto postSaveDto){
-        final Post post = new Post(postSaveDto);
-        simplePostRepository.save(post);
+    public void saveEditedPost(final PostSaveDto postSaveDto){
+        simplePostRepository.save(Post.from(postSaveDto));
     }
-    public void savePost(final long id, final PostEditDto postEditDto){
-        simplePostRepository.findById(id).editPost(postEditDto);
-    } //TODO 데이터베이스 연동 이후 수정 예정
+    public void saveEditedPost(final long id, final PostEditDto postEditDto){
+        simplePostRepository.edit(id, postEditDto);
+    }
 }

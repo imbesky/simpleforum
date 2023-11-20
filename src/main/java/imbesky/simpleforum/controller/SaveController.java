@@ -19,12 +19,12 @@ public class SaveController {
 
     @PostMapping("/submitpost")
     public String savePost(final PostSaveDto postSaveDto){
-        saveService.savePost(postSaveDto);
+        saveService.saveEditedPost(postSaveDto);
         return "redirect:/";
     }
     @PostMapping("/editpost")
     public String saveEditedPost(@RequestParam final long id, final PostEditDto postEditDto) {
-        saveService.savePost(id, postEditDto);
+        saveService.saveEditedPost(id, postEditDto);
         return "redirect:/";
     }
 }

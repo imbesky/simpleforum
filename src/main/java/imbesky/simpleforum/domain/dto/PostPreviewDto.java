@@ -1,8 +1,5 @@
 package imbesky.simpleforum.domain.dto;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 public record PostPreviewDto(
         long id,
         String author,

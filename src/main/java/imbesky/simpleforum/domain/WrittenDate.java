@@ -1,10 +1,8 @@
 package imbesky.simpleforum.domain;
 
 import jakarta.persistence.Embeddable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import org.springframework.format.datetime.DateFormatter;
 
 @Embeddable
 public class WrittenDate {

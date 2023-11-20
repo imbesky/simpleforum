@@ -1,6 +1,7 @@
 package imbesky.simpleforum.repository;
 
 import imbesky.simpleforum.domain.Post;
+import imbesky.simpleforum.domain.dto.PostEditDto;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,7 @@ public class SimplePostRepository implements PostRepository {
     }
 
     @Override
-    public void edit(final long id) {
+    public void edit(final long id, PostEditDto postEditDto) {
 
     }
 
