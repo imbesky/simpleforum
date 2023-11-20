@@ -3,12 +3,15 @@ package imbesky.simpleforum.service;
 import imbesky.simpleforum.domain.Post;
 import imbesky.simpleforum.domain.dto.PostEditDto;
 import imbesky.simpleforum.domain.dto.PostSaveDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import imbesky.simpleforum.repository.SimplePostRepository;
 
 @Service
 public class SaveService {
     private final SimplePostRepository simplePostRepository;
+
+    @Autowired
     public SaveService(SimplePostRepository simplePostRepository) {
         this.simplePostRepository = simplePostRepository;
     }

@@ -3,6 +3,7 @@ package imbesky.simpleforum.controller;
 import imbesky.simpleforum.domain.dto.PasswordDto;
 import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.service.EditService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class EditController {
     private final EditService editService;
+
+    @Autowired
     public EditController(final EditService editService) {
         this.editService = editService;
     }

@@ -2,11 +2,14 @@ package imbesky.simpleforum.service;
 
 import imbesky.simpleforum.domain.dto.PasswordDto;
 import imbesky.simpleforum.repository.SimplePostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DeleteService implements PostService{
     private final SimplePostRepository simplePostRepository;
+
+    @Autowired
     public DeleteService(SimplePostRepository simplePostRepository) {
         this.simplePostRepository = simplePostRepository;
     }

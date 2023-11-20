@@ -5,11 +5,14 @@ import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.domain.dto.PostPreviewDto;
 import imbesky.simpleforum.repository.SimplePostRepository;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ViewerService {
     private final SimplePostRepository simplePostRepository;
+
+    @Autowired
     public ViewerService(SimplePostRepository simplePostRepository) {
         this.simplePostRepository = simplePostRepository;
     }
