@@ -1,22 +1,25 @@
 package imbesky.simpleforum.domain;
 
+import static imbesky.simpleforum.constant.Format.PASSWORD_FORMAT;
+
 import imbesky.simpleforum.exception.PasswordException;
+import java.util.regex.Pattern;
 
 public class Password {
-    private static final int PROPER_LENGTH = 4;
     private final String password;
     public Password(final String string){
         validate(string);
         password = string;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean checkPassword(final String input){
+        return password.equals(input);
     }
 
     private void validate(final String input){
-        if(input.length()!=PROPER_LENGTH){
-            throw new PasswordException();
+        if(Pattern.matches(PASSWORD_FORMAT,input)){
+            return;
         }
+        throw new PasswordException();
     }
 }

@@ -13,12 +13,7 @@ public class SimplePostRepository implements PostRepository {
     }
 
     @Override
-    public void edit(final long id, final Post post) {
-
-    }
-
-    @Override
-    public void edit(final Post post) {
+    public void edit(final long id) {
 
     }
 

@@ -1,7 +1,9 @@
 package imbesky.simpleforum.domain;
 
+import imbesky.simpleforum.domain.dto.PostEditDto;
+import imbesky.simpleforum.domain.dto.PostPreviewDto;
 import imbesky.simpleforum.domain.dto.PostSaveDto;
-import java.time.LocalDate;
+import imbesky.simpleforum.domain.dto.PostViewDto;
 
 public class Post {
     private long id;
@@ -17,40 +19,19 @@ public class Post {
         writtenDate = new WrittenDate();
         content = new Content(postSaveDto.content());
     }
-    public long postId(){
-        return id;
+
+    public PostViewDto toPostViewDto(){
+        return PostViewDto.of(id, author.authorName(), title.fullTitle(),
+                writtenDate.initialWrittenDate(), content.fullContent());
     }
-    public String authorName(){
-        return author.authorName();
+
+    public PostPreviewDto toPostPreviewDto(){
+        return PostPreviewDto.of(id, author.authorName(), title.shortTitle(), writtenDate.initialWrittenDate());
     }
-    public String getPassword(){
-        return password.getPassword();
-    }
-    public String shortTitle(){
-        return title.shortTitle();
-    }
-    public String fullTitle(){
-        return title.fullTitle();
-    }
-    public LocalDate writtenDate(){
-        return writtenDate.initialWrittenDate();
-    }
-    public long passedDayUntilNow(){
-        return writtenDate.passedDayUntilNow();
-    }
-    public String shortContent(){
-        return content.shortContent();
-    }
-    public String fullContent(){
-        return content.fullContent();
-    }
-    public void resetPassword(final String string){
-        this.password = new Password(string);
-    }
-    public void editTitle(final String string){
-        this.title = new Title(string);
-    }
-    public void editContent(final String string){
-        this.content = new Content(string);
+
+    public void editPost(final PostEditDto postEditDto){
+        password = new Password(postEditDto.password());
+        title = new Title(postEditDto.title());
+        content = new Content(postEditDto.content());
     }
 }

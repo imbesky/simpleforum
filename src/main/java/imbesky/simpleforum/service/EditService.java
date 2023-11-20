@@ -1,7 +1,7 @@
 package imbesky.simpleforum.service;
 
 import imbesky.simpleforum.domain.dto.PasswordDto;
-import imbesky.simpleforum.domain.dto.PostSaveDto;
+import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.repository.SimplePostRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class EditService implements PostService{
         return simplePostRepository.checkPassword(passwordDto.inputPassword(),passwordDto.id());
     }
 
-    public PostSaveDto originalPost(final long id){
-        return PostSaveDto.from(simplePostRepository.findById(id));
+    public PostViewDto originalPost(final long id){
+        return simplePostRepository.findById(id).toPostViewDto();
     }
 }

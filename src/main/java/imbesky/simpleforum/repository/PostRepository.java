@@ -5,10 +5,7 @@ import java.util.List;
 
 public interface PostRepository {
     void save(final Post post);
-    void edit(final long id, final Post post);
-
-    void edit(final Post post);
-
+    void edit(final long id);
     void delete(final long id);
     boolean checkPassword(final String input, final long id);
     List<Post> findAllPosts();

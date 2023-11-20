@@ -1,5 +1,6 @@
 package imbesky.simpleforum.controller;
 
+import imbesky.simpleforum.domain.dto.PostEditDto;
 import imbesky.simpleforum.domain.dto.PostSaveDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,8 @@ public class SaveController {
         return "redirect:/";
     }
     @PostMapping("/editpost")
-    public String saveEditedPost(@RequestParam final long id, final PostSaveDto postSaveDto) {
-        saveService.savePost(postSaveDto);
+    public String saveEditedPost(@RequestParam final long id, final PostEditDto postEditDto) {
+        saveService.savePost(id, postEditDto);
         return "redirect:/";
     }
 }

@@ -1,7 +1,7 @@
 package imbesky.simpleforum.controller;
 
 import imbesky.simpleforum.domain.dto.PasswordDto;
-import imbesky.simpleforum.domain.dto.PostSaveDto;
+import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.service.EditService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +20,14 @@ public class EditController {
         model.addAttribute("id", id);
     }
 
-    @PostMapping("/edit-pwcheck")
+    @PostMapping("/edit-password-check")
     public String checkPassword(@RequestParam final long id, final Model model, final PasswordDto passwordDto){
         if (editService.checkPassword(passwordDto)){
-            final PostSaveDto original = editService.originalPost(passwordDto.id());
+            final PostViewDto original = editService.originalPost(passwordDto.id());
             model.addAttribute("post", original);
             model.addAttribute("id", id);
             return "/editor-edit";
         }
-        return "/pwerror";
+        return "/password-error";
     }
 }

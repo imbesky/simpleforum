@@ -17,15 +17,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="number : ${#numbers.sequence(0,postsNumber)}">
-                <td th:text="${ids.get(number)}"></td>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id()}"></td>
                 <td>
-                    <a th:href="@{'/view?id=' + ${ids.get(number)}}">
-                        <span th:text="${titles.get(number)}"></span>
+                    <a th:href="@{'/view?id=' + ${post.id()}}">
+                        <span th:text="${post.title()}"></span>
                     </a>
                 </td>
-                <td th:text="${authors.get(number)}"></td>
-                <td th:text="${writtenDates.get(number)}"></td>
+                <td th:text="${post.author()}"></td>
+                <td th:text="${post.writtenDate()}"></td>
             </tr>
             </tbody>
         </table>

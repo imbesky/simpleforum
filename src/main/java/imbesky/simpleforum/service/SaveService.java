@@ -1,6 +1,7 @@
 package imbesky.simpleforum.service;
 
 import imbesky.simpleforum.domain.Post;
+import imbesky.simpleforum.domain.dto.PostEditDto;
 import imbesky.simpleforum.domain.dto.PostSaveDto;
 import org.springframework.stereotype.Service;
 import imbesky.simpleforum.repository.SimplePostRepository;
@@ -15,8 +16,7 @@ public class SaveService {
         final Post post = new Post(postSaveDto);
         simplePostRepository.save(post);
     }
-    public void savePost(final long id, final PostSaveDto postSaveDto){
-        final Post post = new Post(postSaveDto);
-        simplePostRepository.edit(id, post);
+    public void savePost(final long id, final PostEditDto postEditDto){
+        simplePostRepository.findById(id).editPost(postEditDto);
     } //TODO 데이터베이스 연동 이후 수정 예정
 }

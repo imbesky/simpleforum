@@ -26,6 +26,6 @@ public class DeleteController {
             deleteService.deletePost(id);
             return "redirect:/";
         }
-        return "/pwerror";
+        return "/password-error";
     }
 }

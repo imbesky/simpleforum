@@ -1,6 +1,5 @@
 package imbesky.simpleforum.domain.dto;
 
-import imbesky.simpleforum.domain.Post;
 import java.time.LocalDate;
 
 public record PostViewDto(
@@ -10,7 +9,7 @@ public record PostViewDto(
         LocalDate writtenDate,
         String content
 ) {
-    public static PostViewDto of(final Post post){
-        return new PostViewDto(post.postId(),post.authorName(),post.fullTitle(),post.writtenDate(),post.fullContent());
+    public static PostViewDto of(final long id, final String author, final String title, final LocalDate writtenDate, final String content){
+        return new PostViewDto(id, author, title, writtenDate, content);
     }
 }
