@@ -1,13 +1,12 @@
 package imbesky.simpleforum.domain;
 
-import static imbesky.simpleforum.constant.Format.PASSWORD_FORMAT;
-
 import imbesky.simpleforum.exception.PasswordException;
 import jakarta.persistence.Embeddable;
 import java.util.regex.Pattern;
 
 @Embeddable
 public class Password {
+    private static final String PASSWORD_FORMAT = "^[a-zA-Z0-9]{4}$";
     private String password;
     public Password() {
     }
