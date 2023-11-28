@@ -1,30 +1,35 @@
 package imbesky.simpleforum.service;
 
+import static imbesky.simpleforum.constant.Format.DASH;
+import static imbesky.simpleforum.constant.Format.NO_POSTS;
+
 import imbesky.simpleforum.domain.Post;
 import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.domain.dto.PostPreviewDto;
-import imbesky.simpleforum.repository.JpaRepository;
+import imbesky.simpleforum.repository.PostRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
 @Transactional
 public class ViewerService {
-    private final JpaRepository jpaRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public ViewerService(final JpaRepository jpaRepository) {
-        this.jpaRepository = jpaRepository;
+    public ViewerService(final PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
     public PostViewDto viewPost(final long id){
-        return jpaRepository.findById(id).toPostViewDto();
+        return postRepository.findById(id).toPostViewDto();
     }
 
     public List<PostPreviewDto> previews(){
-        return jpaRepository.findAllPosts().stream().map(Post::toPostPreviewDto).toList();
+        final List<Post> posts = postRepository.findAllPosts();
+        if(posts.isEmpty()){
+            return List.of(PostPreviewDto.of(null, DASH, NO_POSTS, DASH));
+        }
+        return posts.stream().map(Post::toPostPreviewDto).toList();
     }
 
 }
