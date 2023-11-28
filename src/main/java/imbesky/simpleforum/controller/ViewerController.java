@@ -20,10 +20,14 @@ public class ViewerController {
     }
 
     @GetMapping("/")
-    public String list(final Model model){
+    public String indexPage(){
+        return "redirect:/"+"list";
+    }
+
+    @GetMapping("/list")
+    public void list(final Model model){
         final List<PostPreviewDto> posts = viewerService.previews();
         model.addAttribute("posts",posts);
-        return "list";
     }
 
     @GetMapping("/view")
