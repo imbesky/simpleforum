@@ -1,26 +1,24 @@
 package imbesky.simpleforum.service;
 
 import imbesky.simpleforum.domain.dto.PasswordDto;
-import imbesky.simpleforum.repository.JpaRepository;
+import imbesky.simpleforum.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
 @Transactional
 public class DeleteService implements PostService{
-    private final JpaRepository jpaRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public DeleteService(final JpaRepository jpaRepository) {
-        this.jpaRepository = jpaRepository;
+    public DeleteService(final PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
     public boolean checkPassword(final PasswordDto passwordDto){
-        return jpaRepository.checkPassword(passwordDto.inputPassword(),passwordDto.id());
+        return postRepository.checkPassword(passwordDto.inputPassword(),passwordDto.id());
     }
 
     public void deletePost(final long id){
-        jpaRepository.delete(id);
+        postRepository.delete(id);
     }
 }

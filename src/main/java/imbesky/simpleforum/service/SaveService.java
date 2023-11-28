@@ -3,24 +3,22 @@ package imbesky.simpleforum.service;
 import imbesky.simpleforum.domain.Post;
 import imbesky.simpleforum.domain.dto.PostEditDto;
 import imbesky.simpleforum.domain.dto.PostSaveDto;
-import imbesky.simpleforum.repository.JpaRepository;
+import imbesky.simpleforum.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
 @Transactional
 public class SaveService {
-    private final JpaRepository jpaRepository;
+    private final PostRepository postRepository;
 
     @Autowired
-    public SaveService(final JpaRepository jpaRepository) {
-        this.jpaRepository = jpaRepository;
+    public SaveService(final PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
     public void saveEditedPost(final PostSaveDto postSaveDto){
-        jpaRepository.save(Post.from(postSaveDto));
+        postRepository.save(Post.from(postSaveDto));
     }
     public void saveEditedPost(final long id, final PostEditDto postEditDto){
-        jpaRepository.edit(id, postEditDto);
+        postRepository.edit(id, postEditDto);
     }
 }
