@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>List</title>
@@ -20,7 +20,7 @@
             <tr th:each="post : ${posts}">
                 <td th:text="${post.id()}"></td>
                 <td>
-                    <a th:href="@{'/view?id=' + ${post.id()}}">
+                    <a th:href="${post.url()}">
                         <span th:text="${post.title()}"></span>
                     </a>
                 </td>
