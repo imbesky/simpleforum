@@ -45,6 +45,10 @@ public class Post {
         return PostPreviewDto.of(id, author.authorName(), title.shortTitle(), writtenDate.initialWrittenDate());
     }
 
+    public long Id(){
+        return id;
+    }
+
     public boolean checkPassword(final String input){
         return password.check(input);
     }
