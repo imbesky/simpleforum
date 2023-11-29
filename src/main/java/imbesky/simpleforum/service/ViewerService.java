@@ -25,7 +25,7 @@ public class ViewerService {
     }
 
     public List<PostPreviewDto> previews(){
-        final List<Post> posts = postRepository.findAllPosts();
+        final List<Post> posts = postRepository.findAll();
         if(posts.isEmpty()){
             return List.of(PostPreviewDto.of(null, DASH, NO_POSTS, DASH));
         }

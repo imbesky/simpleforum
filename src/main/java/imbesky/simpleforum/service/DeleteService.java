@@ -15,10 +15,10 @@ public class DeleteService implements PostService{
     }
 
     public boolean checkPassword(final PasswordDto passwordDto){
-        return postRepository.checkPassword(passwordDto.inputPassword(),passwordDto.id());
+        return postRepository.findById(passwordDto.id()).checkPassword(passwordDto.inputPassword());
     }
 
     public void deletePost(final long id){
-        postRepository.delete(id);
+        postRepository.deleteById(id);
     }
 }

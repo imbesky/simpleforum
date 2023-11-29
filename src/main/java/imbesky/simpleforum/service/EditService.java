@@ -16,7 +16,7 @@ public class EditService implements PostService{
     }
 
     public boolean checkPassword(final PasswordDto passwordDto){
-        return postRepository.checkPassword(passwordDto.inputPassword(),passwordDto.id());
+        return postRepository.findById(passwordDto.id()).checkPassword(passwordDto.inputPassword());
     }
 
     public PostViewDto originalPost(final long id){

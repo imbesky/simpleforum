@@ -3,13 +3,12 @@ package imbesky.simpleforum.repository;
 import imbesky.simpleforum.domain.Post;
 import imbesky.simpleforum.domain.dto.PostEditDto;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface PostRepository {
-    void save(final Post post);
-    void edit(final long id, final PostEditDto postEditDto);
-    void delete(final long id);
-    boolean checkPassword(final String input, final long id);
-    List<Post> findAllPosts();
+    Post save(final Post post);
+    void deleteById(final long id);
+    List<Post> findAll();
     Post findById(final long id);
-
 }
