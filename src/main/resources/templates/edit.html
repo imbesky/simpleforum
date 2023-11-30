@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>edit</title>
+    <link href="
+https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css
+" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
     <form action="/edit-password-check" method="post">
         <div>
             <label for="id" th:text="${idName}"></label>
@@ -15,8 +20,9 @@
             <input type="text" id="inputPassword" name="inputPassword">
         </div>
         <div>
-            <button type="submit" th:text="${submitNotice}"></button>
+            <button type="submit" th:text="${enterNotice}"></button>
         </div>
     </form>
+</div>
 </body>
 </html>

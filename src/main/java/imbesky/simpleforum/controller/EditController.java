@@ -1,6 +1,7 @@
 package imbesky.simpleforum.controller;
 
 import static imbesky.simpleforum.constant.Element.ID;
+import static imbesky.simpleforum.constant.Format.ENTER;
 import static imbesky.simpleforum.constant.Format.INPUT_PASSWORD;
 import static imbesky.simpleforum.constant.Format.SUBMIT;
 
@@ -27,7 +28,7 @@ public class EditController implements PostController{
         model.addAttribute("id", id);
         model.addAttribute("idName", ID.getName());
         model.addAttribute("inputPassword", INPUT_PASSWORD);
-        model.addAttribute("submitNotice", SUBMIT);
+        model.addAttribute("enterNotice", ENTER);
     }
 
     @PostMapping("/edit-password-check")

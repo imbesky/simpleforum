@@ -1,10 +1,10 @@
 package imbesky.simpleforum.controller;
 
 import static imbesky.simpleforum.constant.Element.ID;
+import static imbesky.simpleforum.constant.Format.ENTER;
 import static imbesky.simpleforum.constant.Format.INPUT_PASSWORD;
 import static imbesky.simpleforum.constant.Format.LIST_PAGE_URL;
 import static imbesky.simpleforum.constant.Format.REDIRECT_URL;
-import static imbesky.simpleforum.constant.Format.SUBMIT;
 
 import imbesky.simpleforum.domain.dto.PasswordDto;
 import imbesky.simpleforum.service.DeleteService;
@@ -29,7 +29,7 @@ public class DeleteController implements PostController{
         model.addAttribute("id", id);
         model.addAttribute("idName", ID.getName());
         model.addAttribute("inputPassword", INPUT_PASSWORD);
-        model.addAttribute("submitNotice", SUBMIT);
+        model.addAttribute("enterNotice", ENTER);
     }
 
     @PostMapping("/deletepost")
