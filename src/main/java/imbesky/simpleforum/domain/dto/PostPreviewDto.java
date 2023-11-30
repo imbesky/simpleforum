@@ -11,7 +11,7 @@ public record PostPreviewDto(
         String writtenDate
 ){
     public static PostPreviewDto of(final Long id, final String author, final String title, final String writtenDate){
-        String url = POST_URL.concat(String.valueOf(id));
+        String url = String.format(POST_URL, id);
         if(id==null){
             url = BLANK;
         }

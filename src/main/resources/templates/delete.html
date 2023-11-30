@@ -2,15 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Delete Post</title>
+    <title>delete</title>
 </head>
 <body>
-    <form th:action="@{'/deletepost?id='+${id}}" method="post">
+<div class="container">
+    <form action="/deletepost" method="post">
         <div>
-            <label for="inputPassword">Enter the Password</label>
+            <label for="id" th:text="${idName}"></label>
+            <input type="text" id="id" name="id" th:value="${id}" readonly>
+        </div>
+        <div>
+            <label for="inputPassword" th:text="${inputPassword}"></label>
             <input type="text" id="inputPassword" name="inputPassword">
-            <button type="submit">Submit</button>
+        </div>
+        <div>
+            <button type="submit" th:text="${submitNotice}"></button>
         </div>
     </form>
+</div>
 </body>
 </html>

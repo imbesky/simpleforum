@@ -34,7 +34,7 @@ public class RepositoryTest {
         final PostSaveDto postSaveDto = new PostSaveDto("1234","author","title","content");
         final Post post = Post.from(postSaveDto);
         postRepository.save(post);
-        PostEditDto postEditDto = new PostEditDto("1235", "title2","content2");
+        PostEditDto postEditDto = PostEditDto.of(post.Id(),"1235", "title2","content2");
 
         postRepository.findById(post.Id()).editPost(postEditDto);
 

@@ -1,5 +1,11 @@
 package imbesky.simpleforum.controller;
 
+import static imbesky.simpleforum.constant.Element.ID;
+import static imbesky.simpleforum.constant.Format.INPUT_PASSWORD;
+import static imbesky.simpleforum.constant.Format.LIST_PAGE_URL;
+import static imbesky.simpleforum.constant.Format.REDIRECT_URL;
+import static imbesky.simpleforum.constant.Format.SUBMIT;
+
 import imbesky.simpleforum.domain.dto.PasswordDto;
 import imbesky.simpleforum.service.DeleteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class DeleteController {
+public class DeleteController implements PostController{
     private final DeleteService deleteService;
 
     @Autowired
@@ -21,14 +27,17 @@ public class DeleteController {
     @GetMapping("/delete")
     public void delete(@RequestParam final long id, final Model model){
         model.addAttribute("id", id);
+        model.addAttribute("idName", ID.getName());
+        model.addAttribute("inputPassword", INPUT_PASSWORD);
+        model.addAttribute("submitNotice", SUBMIT);
     }
 
     @PostMapping("/deletepost")
-    public String postDelete(@RequestParam final long id, final PasswordDto passwordDto){
+    public String postDelete(final PasswordDto passwordDto, final Model model){
         if (deleteService.checkPassword(passwordDto)){
-            deleteService.deletePost(id);
-            return "redirect:/";
+            deleteService.deletePost(passwordDto.id());
+            return REDIRECT_URL.concat(LIST_PAGE_URL);
         }
-        return "/password-error";
+        return toErrorPage(model);
     }
 }

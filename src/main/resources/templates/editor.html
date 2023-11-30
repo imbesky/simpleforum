@@ -2,25 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Editor</title>
+    <title>editor</title>
 </head>
 <body>
     <div class="container">
         <form action="/submitpost" method="post">
             <div>
-                <label for="title">Title</label>
+                <label for="title" th:text="${title}"></label>
                 <input type="text" id="title" name="title" th:placeholder="${titleNotice}">
             </div>
             <div>
-                <label for="author">Author</label>
+                <label for="author" th:text="${author}"></label>
                 <input type="text" id="author" name="author" th:placeholder="${authorNotice}">
             </div>
             <div>
-                <label for="content">Content</label>
+                <label for="content" th:text="${content}"></label>
                 <input type="text" id="content" name="content" th:placeholder="${contentNotice}">
             </div>
             <div>
-                <label for="password">Password</label>
+                <label for="password" th:text="${password}"></label>
                 <input type="password" id="password" name="password" th:placeholder="${passwordNotice}">
             </div>
             <button type="submit" th:text="${submitNotice}"></button>

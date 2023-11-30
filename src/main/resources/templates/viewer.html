@@ -2,22 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Viewer</title>
+    <title>viewer</title>
 </head>
 <body>
     <div class="container">
+        <div id="list">
+            <button><a th:href="'/'+${list}" th:text="${toList}"></a></button>
+        </div>
         <div id="information">
-            <span th:text="${post.getId()}"></span>
-            <span th:text="${post.getTitle()}"></span>
-            <span th:text="${post.getAuthor()}"></span>
-            <span th:text="${post.getWrittenDate()}"></span>
+            <div>
+                <label th:text="${id}"></label>
+                <span th:text="${post.id()}"></span>
+            </div>
+            <div>
+                <label th:text="${title}"></label>
+                <span th:text="${post.title()}"></span>
+            </div>
+            <div>
+                <label th:text="${author}"></label>
+                <span th:text="${post.author()}"></span>
+            </div>
+            <div>
+                <label th:text="${writtenDate}"></label>
+                <span th:text="${post.writtenDate()}"></span>
+            </div>
         </div>
         <div id="content">
-            <span th:text="${post.getContent()}"></span>
+            <span th:text="${post.content()}"></span>
         </div>
-        <div id="button">
-            <button><a th:href="@{'/edit?id='+${post.getId()}}">Edit</a></button>
-            <button><a th:href="@{'/delete?id='+${post.getId()}}">Delete</a></button>
+        <div id="buttons">
+            <button><a th:href="${'/edit?id='+post.id()}" th:text="${editNotice}"></a></button>
+            <button><a th:href="${'/delete?id='+post.id()}" th:text="${deleteNotice}"></a></button>
         </div>
     </div>
 </body>

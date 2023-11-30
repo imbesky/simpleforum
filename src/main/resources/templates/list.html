@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List</title>
+    <title>list</title>
 </head>
 <body>
     <div class="container">
-        <button><a href="/editor">write post</a></button>
+        <button><a href="/editor" th:text="${write}"></a></button>
         <table>
             <thead>
             <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Date</th>
+                <th th:text="${id}"></th>
+                <th th:text="${title}"></th>
+                <th th:text="${author}"></th>
+                <th th:text="${writtenDate}"></th>
             </tr>
             </thead>
             <tbody>

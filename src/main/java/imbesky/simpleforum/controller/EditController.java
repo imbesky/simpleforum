@@ -1,5 +1,9 @@
 package imbesky.simpleforum.controller;
 
+import static imbesky.simpleforum.constant.Element.ID;
+import static imbesky.simpleforum.constant.Format.INPUT_PASSWORD;
+import static imbesky.simpleforum.constant.Format.SUBMIT;
+
 import imbesky.simpleforum.domain.dto.PasswordDto;
 import imbesky.simpleforum.domain.dto.PostViewDto;
 import imbesky.simpleforum.service.EditService;
@@ -10,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 @Controller
-public class EditController {
+public class EditController implements PostController{
     private final EditService editService;
 
     @Autowired
@@ -21,16 +25,24 @@ public class EditController {
     @GetMapping("/edit")
     public void editMapping(@RequestParam final long id, final Model model){
         model.addAttribute("id", id);
+        model.addAttribute("idName", ID.getName());
+        model.addAttribute("inputPassword", INPUT_PASSWORD);
+        model.addAttribute("submitNotice", SUBMIT);
     }
 
     @PostMapping("/edit-password-check")
-    public String checkPassword(@RequestParam final long id, final Model model, final PasswordDto passwordDto){
+    public String checkPassword(final Model model, final PasswordDto passwordDto){
         if (editService.checkPassword(passwordDto)){
-            final PostViewDto original = editService.originalPost(passwordDto.id());
-            model.addAttribute("post", original);
-            model.addAttribute("id", id);
-            return "/editor-edit";
+            return toEditor(model, editService.originalPost(passwordDto.id()));
         }
-        return "/password-error";
+        return toErrorPage(model);
+    }
+
+    private String toEditor(final Model model, final PostViewDto post){
+        model.addAttribute("post", post);
+        setNames(model);
+        setNotices(model);
+        model.addAttribute("submitNotice",SUBMIT);
+        return "/editor-edit";
     }
 }

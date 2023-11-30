@@ -18,7 +18,7 @@ public class SaveService {
     public void saveEditedPost(final PostSaveDto postSaveDto){
         postRepository.save(Post.from(postSaveDto));
     }
-    public void saveEditedPost(final long id, final PostEditDto postEditDto){
-        postRepository.findById(id).editPost(postEditDto);
+    public void saveEditedPost(final PostEditDto postEditDto){
+        postRepository.findById(postEditDto.id()).editPost(postEditDto);
     }
 }
