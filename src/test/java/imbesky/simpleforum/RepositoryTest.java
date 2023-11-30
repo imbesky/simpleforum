@@ -36,7 +36,7 @@ public class RepositoryTest {
         postRepository.save(post);
         PostEditDto postEditDto = new PostEditDto("1235", "title2","content2");
 
-        postRepository.edit(post.Id(), postEditDto);
+        postRepository.findById(post.Id()).editPost(postEditDto);
 
         Post edittedPost = postRepository.findById(post.Id());
         assertThat(edittedPost.checkPassword("1235")).isEqualTo(true);
@@ -51,7 +51,7 @@ public class RepositoryTest {
         final Post post = Post.from(postSaveDto);
         postRepository.save(post);
 
-        postRepository.delete(post.Id());
+        postRepository.deleteById(post.Id());
 
         assertThat(postRepository.findById(post.Id())).isEqualTo(null);
     }
@@ -65,7 +65,11 @@ public class RepositoryTest {
         final Post post2 = Post.from(postSaveDto2);
         final Post post3 = Post.from(postSaveDto3);
 
-        List<Post> foundPosts = postRepository.findAllPosts();
+        postRepository.save(post);
+        postRepository.save(post2);
+        postRepository.save(post3);
+
+        List<Post> foundPosts = postRepository.findAll();
         List<Post> expected = List.of(post, post2, post3);
 
         assertThat(foundPosts).isEqualTo(expected);
