@@ -8,8 +8,8 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Author {
-    private final static int MIN_LENGTH = 4;
-    private final static int MAX_LENGTH = 12;
+    public final static int MIN_LENGTH = 4;
+    public final static int MAX_LENGTH = 12;
     private String author;
     public Author() {
     }

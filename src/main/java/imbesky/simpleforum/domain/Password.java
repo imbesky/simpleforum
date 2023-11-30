@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 @Embeddable
 public class Password {
     private static final String PASSWORD_FORMAT = "^[a-zA-Z0-9]{4}$";
+    public static final int PROPER_LENGTH = 4;
     private String password;
     public Password() {
     }

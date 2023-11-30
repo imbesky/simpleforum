@@ -9,8 +9,8 @@ import jakarta.persistence.Embeddable;
 public class Title {
     private static final int FIRST_INDEX = 0;
     private static final int SHORT_END_INDEX = 9;
-    private static final int MIN_LENGTH = 4;
-    private static final int MAX_LENGTH = 50;
+    public static final int MIN_LENGTH = 4;
+    public static final int MAX_LENGTH = 50;
     private String title;
     public Title() {
     }

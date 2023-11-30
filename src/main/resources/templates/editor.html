@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Editor</title>
@@ -9,21 +9,21 @@
         <form action="/submitpost" method="post">
             <div>
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Title here">
+                <input type="text" id="title" name="title" th:placeholder="${titleNotice}">
             </div>
             <div>
                 <label for="author">Author</label>
-                <input type="text" id="author" name="author" placeholder="Author here">
+                <input type="text" id="author" name="author" th:placeholder="${authorNotice}">
             </div>
             <div>
                 <label for="content">Content</label>
-                <input type="text" id="content" name="content" placeholder="Content here">
+                <input type="text" id="content" name="content" th:placeholder="${contentNotice}">
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password here">
+                <input type="password" id="password" name="password" th:placeholder="${passwordNotice}">
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" th:text="${submitNotice}"></button>
         </form>
     </div>
 </body>

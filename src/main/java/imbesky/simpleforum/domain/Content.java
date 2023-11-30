@@ -9,7 +9,8 @@ import jakarta.persistence.Embeddable;
 public class Content {
     private static final int FIRST_INDEX = 0;
     private static final int SHORT_END_INDEX = 99;
-    private static final int MAX_LENGTH = 1_000;
+    public static final int MIN_LENGTH = 1;
+    public static final int MAX_LENGTH = 1_000;
     private String content;
     public Content() {
     }
