@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>list</title>
+    <link href="
+https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css
+" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <button><a href="/editor" th:text="${write}"></a></button>
+        <a href="/editor" th:text="${write}" role="button"></a>
         <table>
             <thead>
             <tr>

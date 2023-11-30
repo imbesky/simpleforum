@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>editor-edit</title>
+    <link href="
+https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css
+" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -18,8 +22,8 @@
             </div>
             <div>
                 <label for="content" th:text="${content}"></label>
-                <input type="text" id="content" name="content" th:value="${post.content()}"
-                       th:placeholder="${contentNotice}">
+                <input type="text" id="content" name="content"
+                       th:value="${post.content()}" th:placeholder="${contentNotice}">
             </div>
             <div>
                 <label for="password" th:text="${password}"></label>

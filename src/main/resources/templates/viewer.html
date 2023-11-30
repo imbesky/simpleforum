@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>viewer</title>
+    <link href="
+https://cdn.jsdelivr.net/npm/@picocss/pico@1.5.10/css/pico.min.css
+" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div id="list">
-            <button><a th:href="'/'+${list}" th:text="${toList}"></a></button>
+            <a th:href="'/'+${list}" th:text="${toList}" role="button"></a>
         </div>
         <div id="information">
             <div>
@@ -27,12 +31,14 @@
                 <span th:text="${post.writtenDate()}"></span>
             </div>
         </div>
-        <div id="content">
-            <span th:text="${post.content()}"></span>
+        <div>
+            <span id="content" th:text="${post.content()}"></span>
         </div>
         <div id="buttons">
-            <button><a th:href="${'/edit?id='+post.id()}" th:text="${editNotice}"></a></button>
-            <button><a th:href="${'/delete?id='+post.id()}" th:text="${deleteNotice}"></a></button>
+            <a th:href="${'/edit?id='+post.id()}" th:text="${editNotice}"
+               role="button" class="secondary"></a>
+            <a th:href="${'/delete?id='+post.id()}" th:text="${deleteNotice}"
+               role="button" class="contrast"></a>
         </div>
     </div>
 </body>
